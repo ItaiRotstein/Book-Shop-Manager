@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-trans="doc-title">Book-Shop</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body onload="onInit()">
+
+    <div class="container border-white d-grid gap-3">
+
+        <header class="masthead">
+            <div class="container">
+                <div class="intro-text">
+                    <div class="intro-lead-in"></div>
+                    <div class="intro-heading"></div>
+                </div>
+            </div>
+        </header>
+
+        <h1 class="display-4 fw-normal" data-trans="welcome">Welcome To The Book Shop</h1>
+
+        <header class="container p-0">
+            <select class="xl" onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+                <option value="es">Español</option>
+            </select>
+        </header>
+
+        <!-- ADD NEW BOOK -->
+        <section>
+            <h4 data-trans="book-add">Add New Book</h4>
+            <form onsubmit="onAddBook(event)">
+                <div class="mb-3">
+                    <input type="text" name="title" class="form-control" data-trans="book-title" placeholder="Title" required
+                        autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="price" class="form-control" data-trans="book-price" placeholder="Price" required
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary create-btn" data-trans="create-book">Add</button>
+            </form>
+        </section>
+
+        <!-- //TABLE -->
+        <table class="table table-info table-striped table-hover table-bordered shadow p-3 mb-5 bg-body rounded">
+            <thead>
+                <th data-trans="book-id">Id</th>
+                <th class="th-sort" data-trans="book-title" onclick="onSetSortBy('title')">Title</th>
+                <th class="th-sort" data-trans="book-price" onclick="onSetSortBy('price')">Price</th>
+                <th data-trans="book-rate">Rate</th>
+                <th data-trans="book-actions">Actions</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <!-- read book modal -->
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGING -->
+        <div class="paging">
+            <button class="prev disabled" disabled onclick="onNextPage(-1)">«</button>
+            <div class="page-num"></div>
+            <button class="next" onclick="onNextPage(1)">»</button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="container">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+                <p class="text-center text-muted">© The Book Shop, Inc</p>
+            </footer>
+        </div>
+
+    </div>
+
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/i18n-service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+</body>
+
+</html>
